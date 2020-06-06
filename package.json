@@ -1,0 +1,46 @@
+{
+  "name": "vue-test",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "core-js": "^2.6.5",
+    "firebase": "^6.4.0",
+    "sweetalert2": "^8.16.2",
+    "tiptap-vuetify": "^1.6.0",
+    "vue": "^2.6.10",
+    "vue-carousel-3d": "^0.2.0",
+    "vue-easy-lightbox": "^0.13.0",
+    "vue-firestore": "^0.3.22",
+    "vue-gallery": "^2.0.1",
+    "vue-owl-carousel": "^2.0.3",
+    "vue-router": "^3.0.3",
+    "vue-upload-multiple-image": "^1.1.4",
+    "vue2-editor": "^2.10.0",
+    "vuelidate": "^0.7.4",
+    "vueperslides": "^1.21.0",
+    "vuetify": "^2.0.18"
+  },
+  "devDependencies": {
+    "@mdi/font": "^4.0.96",
+    "@vue/cli-plugin-babel": "^3.10.0",
+    "@vue/cli-plugin-eslint": "^3.10.0",
+    "@vue/cli-service": "^3.10.0",
+    "@vue/eslint-config-prettier": "^5.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "material-design-icons-iconfont": "^5.0.1",
+    "prettier": "^1.18.2",
+    "sass": "^1.18.0",
+    "sass-loader": "^7.1.0",
+    "vue-cli-plugin-vuetify": "^0.6.3",
+    "vue-template-compiler": "^2.6.10",
+    "vuetify-loader": "^1.2.2"
+  }
+}
