@@ -12,7 +12,11 @@
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
 
-            <v-list-item v-for="subItem in item.items" :key="subItem.title" :to="subItem.link">
+            <v-list-item
+              v-for="subItem in item.items"
+              :key="subItem.title"
+              :to="subItem.link"
+            >
               <v-list-item-content>
                 <v-list-item-title v-text="subItem.title"></v-list-item-title>
               </v-list-item-content>
@@ -21,15 +25,28 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar app style="position: relative;background-color:#1B9DD8;height:80px">
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-sm-and-up"></v-app-bar-nav-icon>
+    <v-app-bar
+      app
+      style="position: relative;background-color:#1B9DD8;height:80px"
+      fixed
+    >
+      <v-app-bar-nav-icon
+        @click.stop="drawer = !drawer"
+        class="hidden-sm-and-up"
+      ></v-app-bar-nav-icon>
       <v-toolbar-title class="headline text-uppercase" data-app>
         <router-link to="/">
-          <v-img src="../../assets/logo/bijoybd.png" style="margin-top:20px; "></v-img>
+          <v-img
+            src="../../assets/logo/bijoybd.png"
+            style="margin-top:20px; "
+          ></v-img>
         </router-link>
       </v-toolbar-title>
       <div>
-        <img src="../../assets/logo/Logosmall.png" style="margin-left:10px;margin-top:30px;" />
+        <img
+          src="../../assets/logo/Logosmall.png"
+          style="margin-left:10px;margin-top:30px;"
+        />
       </div>
 
       <v-spacer></v-spacer>
@@ -50,21 +67,37 @@
           </template>
 
           <v-row>
-            <v-col v-if="item.title=='Programs'" cols="4" style="background-color:#1B9DD8">
+            <v-col
+              v-if="item.title == 'Programs'"
+              cols="6"
+              style="background-color:#1B9DD8"
+            >
               <v-list dark color="#1B9DD8">
-                <v-list-item v-for="(item, i) in item.items" :key="i" :to="item.link">
+                <v-list-item
+                  v-for="(item, i) in item.items"
+                  :key="i"
+                  :to="item.link"
+                >
                   <v-list-item-title>{{ item.title }}</v-list-item-title>
                 </v-list-item>
               </v-list>
             </v-col>
-            <v-col v-if="item.title=='Programs'" cols="4" style="background-color:#1B9DD8">
+            <v-col
+              v-if="item.title == 'Programs'"
+              cols="6"
+              style="background-color:#1B9DD8"
+            >
               <v-list dark color="#1B9DD8">
-                <v-list-item v-for="(item, i) in item.items2" :key="i" :to="item.link">
+                <v-list-item
+                  v-for="(item, i) in item.items2"
+                  :key="i"
+                  :to="item.link"
+                >
                   <v-list-item-title>{{ item.title }}</v-list-item-title>
                 </v-list-item>
               </v-list>
             </v-col>
-            <v-col v-if="item.title=='Programs'" cols="8" style="background-color:#1B9DD8">
+            <!-- <v-col v-if="item.title=='Programs'" cols="8" style="background-color:#1B9DD8">
               <div style="padding-right:15px;padding-left:15px;">
                 <iframe
                   width="100%"
@@ -76,16 +109,28 @@
                   allowfullscreen
                 ></iframe>
               </div>
-            </v-col>
-            <v-col v-if="item.title=='About'" cols="5" style="background-color:#1B9DD8">
+            </v-col> -->
+            <v-col
+              v-if="item.title == 'About'"
+              cols="12"
+              style="background-color:#1B9DD8"
+            >
               <v-list dark color="#1B9DD8">
-                <v-list-item v-for="(item, i) in item.items" :key="i">
-                  <router-link :to="item.link" tag="span">{{ item.title }}</router-link>
+                <v-list-item
+                  v-for="(item, i) in item.items"
+                  :key="i"
+                  :to="item.link"
+                >
+                  {{ item.title }}
                 </v-list-item>
               </v-list>
             </v-col>
 
-            <v-col v-if="item.title=='About'" cols="7" style="background-color:#1B9DD8">
+            <!-- <v-col
+              v-if="item.title == 'About'"
+              cols="7"
+              style="background-color:#1B9DD8"
+            >
               <div style="padding-right:15px;">
                 <iframe
                   width="100%"
@@ -97,7 +142,7 @@
                   allowfullscreen
                 ></iframe>
               </div>
-            </v-col>
+            </v-col> -->
           </v-row>
         </v-menu>
       </v-toolbar-items>
@@ -219,6 +264,8 @@ export default {
     var aboutnav = document.getElementById("aboutnav");
     if (aboutnav !== null) {
       var aboutstick = aboutnav.offsetTop;
+    } else {
+      var aboutstick = null;
     }
     function aboutFunc() {
       if (aboutstick !== null) {

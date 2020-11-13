@@ -1,36 +1,53 @@
 <template>
   <v-app>
     <v-row
-      v-if="sliders[0].name=='Video'"
-      style="position: relative;width: 100%;padding-bottom: 56.25%; height: 0;"
+      v-if="sliders[0].name == 'Video'"
+      style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0"
     >
       <video autoplay muted loop id="myVideo">
-        <source src="../assets/BB.mp4" type="video/mp4" />Your browser does not support HTML5 video.
+        <source src="../assets/BB.mp4" type="video/mp4" />
+        Your browser does not support HTML5 video.
       </video>
     </v-row>
 
-    <Slider v-if="sliders[0].name=='Slider'"></Slider>
+    <Slider v-if="sliders[0].name == 'Slider'"></Slider>
     <Navbar />
     <div class="vision" id="about">
-      <v-container style="max-width:1170px;padding-bottom:0px;">
-        <router-link to="#about" style="text-decoration: none;">
+      <v-container style="max-width: 1170px; padding-bottom: 0px">
+        <router-link to="#about" style="text-decoration: none">
           <p
             class="flex font-weight-bold white--text burn"
-            style="text-shadow:1px 2px 3px black;text-align: center;font-size: 74px;line-height: 1em;margin: 30px 0;letter-spacing: -2px; margin-top:500px"
-          >A Burning Vision</p>
+            style="
+              text-shadow: 1px 2px 3px black;
+              text-align: center;
+              font-size: 74px;
+              line-height: 1em;
+              margin: 30px 0;
+              letter-spacing: -2px;
+              margin-top: 500px;
+            "
+          >
+            A Burning Vision
+          </p>
         </router-link>
         <v-row justify-center>
           <v-col md="12">
             <div class="pa-2" outlined tile style="text-align: center">
               <div
                 class="white--text font-weight-bold boxshadow"
-                style="text-shadow:1px 2px 3px black; font-size:60px;"
+                style="text-shadow: 1px 2px 3px black; font-size: 60px"
               >
                 We see every child's life will be...
                 <div
-                  style="font-family: 'Righteous', cursive;text-shadow:1px 2px 3px black;margin-bottom:200px;"
+                  style="
+                    font-family: 'Righteous', cursive;
+                    text-shadow: 1px 2px 3px black;
+                    margin-bottom: 200px;
+                  "
                   class="boxshadow"
-                >FREE, EXEMPLARY and FRUITFUL</div>
+                >
+                  FREE, EXEMPLARY and FRUITFUL
+                </div>
               </div>
             </div>
           </v-col>
@@ -39,14 +56,26 @@
     </div>
     <div class="back" id="program">
       <v-container
-        style="max-width:1170px;text-align: center;margin-left: auto;
-    margin-right: auto;"
+        style="
+          max-width: 1170px;
+          text-align: center;
+          margin-left: auto;
+          margin-right: auto;
+        "
       >
-        <router-link to="#program" style="text-decoration: none;">
+        <router-link to="#program" style="text-decoration: none">
           <p
             class="flex font-weight-bold white--text program"
-            style="text-align: center;font-size: 60px;line-height: 1em;margin: 200px 0 100px 0;letter-spacing: -2px; "
-          >Programs</p>
+            style="
+              text-align: center;
+              font-size: 60px;
+              line-height: 1em;
+              margin: 200px 0 100px 0;
+              letter-spacing: -2px;
+            "
+          >
+            Programs
+          </p>
         </router-link>
 
         <v-row class="align-center justify-center hidden-xs-only">
@@ -54,12 +83,12 @@
             <v-card
               outlined
               tile
-              style="margin-top:60px;border-radius:5px;text-align:center;"
+              style="margin-top: 60px; border-radius: 5px; text-align: center"
               :to="stocks[6].link"
             >
               <v-img
                 :src="stocks[6].backImage"
-                style="position:relative;"
+                style="position: relative"
                 class="programOverlay"
                 width="100%"
                 height="250"
@@ -67,31 +96,53 @@
               <v-img
                 :src="stocks[6].logo"
                 width="150"
-                style="position:absolute;top:50px;left:120px;right:50px;"
+                style="position: absolute; top: 50px; left: 120px; right: 50px"
               ></v-img>
 
               <p
                 class="headline text--primary"
-                style="padding-top:10px;font-family: 'Josefin Sans', sans-serif;font-size: 30px;font-style: normal;font-weight: 700;"
-              >{{ stocks[6].title }}</p>
+                style="
+                  padding-top: 10px;
+                  font-family: 'Josefin Sans', sans-serif;
+                  font-size: 30px;
+                  font-style: normal;
+                  font-weight: 700;
+                "
+              >
+                {{ stocks[6].title }}
+              </p>
               <p
                 class
-                style="font-family: 'Crimson Pro', serif;font-size: 20px;font-style: normal;font-weight:500;padding:10px;"
-              >{{ stocks[6].slogan }}</p>
+                style="
+                  font-family: 'Crimson Pro', serif;
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 500;
+                  padding: 10px;
+                "
+              >
+                {{ stocks[6].slogan }}
+              </p>
             </v-card>
             <v-btn
               color="#F69320"
-              style="margin-top: -10px;"
+              style="margin-top: -10px"
               block
               large
               :to="stocks[6].link"
-            >Read More</v-btn>
+              >Read More</v-btn
+            >
           </v-col>
           <v-col md="4" sm="4" class="small">
-            <v-card outlined tile style="margin-top:120px;border-radius:6px" :to="stocks[0].link">
+            <v-card
+              outlined
+              tile
+              style="margin-top: 120px; border-radius: 6px"
+              :to="stocks[0].link"
+            >
               <v-img
                 :src="stocks[0].backImage"
-                style="position:relative;"
+                style="position: relative"
                 class="programOverlay"
                 width="100%"
                 height="250"
@@ -99,31 +150,53 @@
               <v-img
                 :src="stocks[0].logo"
                 width="150"
-                style="position:absolute;top:50px;left:120px;right:50px;"
+                style="position: absolute; top: 50px; left: 120px; right: 50px"
               ></v-img>
 
               <p
                 class="headline text--primary"
-                style="padding-top:10px;font-family: 'Josefin Sans', sans-serif;font-size: 30px;font-style: normal;font-weight: 700;"
-              >{{ stocks[0].title }}</p>
+                style="
+                  padding-top: 10px;
+                  font-family: 'Josefin Sans', sans-serif;
+                  font-size: 30px;
+                  font-style: normal;
+                  font-weight: 700;
+                "
+              >
+                {{ stocks[0].title }}
+              </p>
               <p
                 class
-                style="font-family: 'Crimson Pro', serif;font-size: 20px;font-style: normal;font-weight:500;padding:10px;"
-              >{{ stocks[0].slogan }}</p>
+                style="
+                  font-family: 'Crimson Pro', serif;
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 500;
+                  padding: 10px;
+                "
+              >
+                {{ stocks[0].slogan }}
+              </p>
             </v-card>
             <v-btn
               color="#F69320"
-              style="margin-top: -10px;"
+              style="margin-top: -10px"
               block
               large
               :to="stocks[0].link"
-            >Read More</v-btn>
+              >Read More</v-btn
+            >
           </v-col>
           <v-col md="4" sm="4" class="small">
-            <v-card outlined tile style="margin-top:230px;border-radius:7px" :to="stocks[7].link">
+            <v-card
+              outlined
+              tile
+              style="margin-top: 230px; border-radius: 7px"
+              :to="stocks[7].link"
+            >
               <v-img
                 :src="stocks[7].backImage"
-                style="position:relative;"
+                style="position: relative"
                 class="programOverlay"
                 width="100%"
                 height="250"
@@ -131,31 +204,53 @@
               <v-img
                 :src="stocks[7].logo"
                 width="150"
-                style="position:absolute;top:50px;left:120px;right:50px;"
+                style="position: absolute; top: 50px; left: 120px; right: 50px"
               ></v-img>
 
               <p
                 class="headline text--primary"
-                style="padding-top:10px;font-family: 'Josefin Sans', sans-serif;font-size: 30px;font-style: normal;font-weight: 700;"
-              >{{ stocks[7].title }}</p>
+                style="
+                  padding-top: 10px;
+                  font-family: 'Josefin Sans', sans-serif;
+                  font-size: 30px;
+                  font-style: normal;
+                  font-weight: 700;
+                "
+              >
+                {{ stocks[7].title }}
+              </p>
               <p
                 class
-                style="font-family: 'Crimson Pro', serif;font-size: 20px;font-style: normal;font-weight:500;padding:10px;"
-              >{{ stocks[7].slogan }}</p>
+                style="
+                  font-family: 'Crimson Pro', serif;
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 500;
+                  padding: 10px;
+                "
+              >
+                {{ stocks[7].slogan }}
+              </p>
             </v-card>
             <v-btn
               color="#F69320"
-              style="margin-top: -10px;"
+              style="margin-top: -10px"
               block
               large
               :to="stocks[7].link"
-            >Read More</v-btn>
+              >Read More</v-btn
+            >
           </v-col>
           <v-col md="4" sm="4" class="small">
-            <v-card outlined tile style="margin-top:-120px;border-radius:7px" :to="stocks[1].link">
+            <v-card
+              outlined
+              tile
+              style="margin-top: -120px; border-radius: 7px"
+              :to="stocks[1].link"
+            >
               <v-img
                 :src="stocks[1].backImage"
-                style="position:relative;"
+                style="position: relative"
                 class="programOverlay"
                 width="100%"
                 height="250"
@@ -163,31 +258,53 @@
               <v-img
                 :src="stocks[1].logo"
                 width="150"
-                style="position:absolute;top:50px;left:120px;right:50px;"
+                style="position: absolute; top: 50px; left: 120px; right: 50px"
               ></v-img>
 
               <p
                 class="headline text--primary"
-                style="padding-top:10px;font-family: 'Josefin Sans', sans-serif;font-size: 30px;font-style: normal;font-weight: 700;"
-              >{{ stocks[1].title }}</p>
+                style="
+                  padding-top: 10px;
+                  font-family: 'Josefin Sans', sans-serif;
+                  font-size: 30px;
+                  font-style: normal;
+                  font-weight: 700;
+                "
+              >
+                {{ stocks[1].title }}
+              </p>
               <p
                 class
-                style="font-family: 'Crimson Pro', serif;font-size: 20px;font-style: normal;font-weight:500;padding:10px;"
-              >{{ stocks[1].slogan }}</p>
+                style="
+                  font-family: 'Crimson Pro', serif;
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 500;
+                  padding: 10px;
+                "
+              >
+                {{ stocks[1].slogan }}
+              </p>
             </v-card>
             <v-btn
               color="#F69320"
-              style="margin-top: -10px;"
+              style="margin-top: -10px"
               block
               large
               :to="stocks[1].link"
-            >Read More</v-btn>
+              >Read More</v-btn
+            >
           </v-col>
           <v-col md="4" sm="4" class="small">
-            <v-card outlined tile style="margin-top:-80px;border-radius:7px" :to="stocks[3].link">
+            <v-card
+              outlined
+              tile
+              style="margin-top: -80px; border-radius: 7px"
+              :to="stocks[3].link"
+            >
               <v-img
                 :src="stocks[3].backImage"
-                style="position:relative;"
+                style="position: relative"
                 class="programOverlay"
                 width="100%"
                 height="250"
@@ -195,31 +312,53 @@
               <v-img
                 :src="stocks[3].logo"
                 width="150"
-                style="position:absolute;top:50px;left:120px;right:50px;"
+                style="position: absolute; top: 50px; left: 120px; right: 50px"
               ></v-img>
 
               <p
                 class="headline text--primary"
-                style="padding-top:10px;font-family: 'Josefin Sans', sans-serif;font-size: 30px;font-style: normal;font-weight: 700;"
-              >{{ stocks[3].title }}</p>
+                style="
+                  padding-top: 10px;
+                  font-family: 'Josefin Sans', sans-serif;
+                  font-size: 30px;
+                  font-style: normal;
+                  font-weight: 700;
+                "
+              >
+                {{ stocks[3].title }}
+              </p>
               <p
                 class
-                style="font-family: 'Crimson Pro', serif;font-size: 20px;font-style: normal;font-weight:500;padding:10px;"
-              >{{ stocks[3].slogan }}</p>
+                style="
+                  font-family: 'Crimson Pro', serif;
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 500;
+                  padding: 10px;
+                "
+              >
+                {{ stocks[3].slogan }}
+              </p>
             </v-card>
             <v-btn
               color="#F69320"
-              style="margin-top: -10px;"
+              style="margin-top: -10px"
               block
               large
               :to="stocks[3].link"
-            >Read More</v-btn>
+              >Read More</v-btn
+            >
           </v-col>
           <v-col md="4" sm="4" class="small">
-            <v-card outlined tile style="margin-top:20px;border-radius:7px" :to="stocks[2].link">
+            <v-card
+              outlined
+              tile
+              style="margin-top: 20px; border-radius: 7px"
+              :to="stocks[2].link"
+            >
               <v-img
                 :src="stocks[2].backImage"
-                style="position:relative;"
+                style="position: relative"
                 class="programOverlay"
                 width="100%"
                 height="250"
@@ -227,31 +366,53 @@
               <v-img
                 :src="stocks[2].logo"
                 width="150"
-                style="position:absolute;top:50px;left:120px;right:50px;"
+                style="position: absolute; top: 50px; left: 120px; right: 50px"
               ></v-img>
 
               <p
                 class="headline text--primary"
-                style="padding-top:10px;font-family: 'Josefin Sans', sans-serif;font-size: 30px;font-style: normal;font-weight: 700;"
-              >{{ stocks[2].title }}</p>
+                style="
+                  padding-top: 10px;
+                  font-family: 'Josefin Sans', sans-serif;
+                  font-size: 30px;
+                  font-style: normal;
+                  font-weight: 700;
+                "
+              >
+                {{ stocks[2].title }}
+              </p>
               <p
                 class
-                style="font-family: 'Crimson Pro', serif;font-size: 20px;font-style: normal;font-weight:500;padding:10px;"
-              >{{ stocks[2].slogan }}</p>
+                style="
+                  font-family: 'Crimson Pro', serif;
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 500;
+                  padding: 10px;
+                "
+              >
+                {{ stocks[2].slogan }}
+              </p>
             </v-card>
             <v-btn
               color="#F69320"
-              style="margin-top: -10px;"
+              style="margin-top: -10px"
               block
               large
               :to="stocks[2].link"
-            >Read More</v-btn>
+              >Read More</v-btn
+            >
           </v-col>
           <v-col md="4" sm="4" class="small">
-            <v-card outlined tile style="margin-top:-35px;border-radius:7px" :to="stocks[5].link">
+            <v-card
+              outlined
+              tile
+              style="margin-top: -35px; border-radius: 7px"
+              :to="stocks[5].link"
+            >
               <v-img
                 :src="stocks[5].backImage"
-                style="position:relative;"
+                style="position: relative"
                 class="programOverlay"
                 width="100%"
                 height="250"
@@ -259,31 +420,53 @@
               <v-img
                 :src="stocks[5].logo"
                 width="150"
-                style="position:absolute;top:50px;left:120px;right:50px;"
+                style="position: absolute; top: 50px; left: 120px; right: 50px"
               ></v-img>
 
               <p
                 class="headline text--primary"
-                style="padding-top:10px;font-family: 'Josefin Sans', sans-serif;font-size: 30px;font-style: normal;font-weight: 700;"
-              >{{ stocks[5].title }}</p>
+                style="
+                  padding-top: 10px;
+                  font-family: 'Josefin Sans', sans-serif;
+                  font-size: 30px;
+                  font-style: normal;
+                  font-weight: 700;
+                "
+              >
+                {{ stocks[5].title }}
+              </p>
               <p
                 class
-                style="font-family: 'Crimson Pro', serif;font-size: 20px;font-style: normal;font-weight:500;padding:10px;"
-              >{{ stocks[5].slogan }}</p>
+                style="
+                  font-family: 'Crimson Pro', serif;
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 500;
+                  padding: 10px;
+                "
+              >
+                {{ stocks[5].slogan }}
+              </p>
             </v-card>
             <v-btn
               color="#F69320"
-              style="margin-top: -10px;"
+              style="margin-top: -10px"
               block
               large
               :to="stocks[5].link"
-            >Read More</v-btn>
+              >Read More</v-btn
+            >
           </v-col>
           <v-col md="4" sm="4" class="small">
-            <v-card outlined tile style="margin-top:-60px;border-radius:7px" :to="stocks[8].link">
+            <v-card
+              outlined
+              tile
+              style="margin-top: -60px; border-radius: 7px"
+              :to="stocks[8].link"
+            >
               <v-img
                 :src="stocks[8].backImage"
-                style="position:relative;"
+                style="position: relative"
                 class="programOverlay"
                 width="100%"
                 height="250"
@@ -291,31 +474,53 @@
               <v-img
                 :src="stocks[8].logo"
                 width="150"
-                style="position:absolute;top:50px;left:120px;right:50px;"
+                style="position: absolute; top: 50px; left: 120px; right: 50px"
               ></v-img>
 
               <p
                 class="headline text--primary"
-                style="padding-top:10px;font-family: 'Josefin Sans', sans-serif;font-size: 30px;font-style: normal;font-weight: 700;"
-              >{{ stocks[8].title }}</p>
+                style="
+                  padding-top: 10px;
+                  font-family: 'Josefin Sans', sans-serif;
+                  font-size: 30px;
+                  font-style: normal;
+                  font-weight: 700;
+                "
+              >
+                {{ stocks[8].title }}
+              </p>
               <p
                 class
-                style="font-family: 'Crimson Pro', serif;font-size: 20px;font-style: normal;font-weight:500;padding:10px;"
-              >{{ stocks[8].slogan }}</p>
+                style="
+                  font-family: 'Crimson Pro', serif;
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 500;
+                  padding: 10px;
+                "
+              >
+                {{ stocks[8].slogan }}
+              </p>
             </v-card>
             <v-btn
               color="#F69320"
-              style="margin-top: -10px;"
+              style="margin-top: -10px"
               block
               large
               :to="stocks[8].link"
-            >Read More</v-btn>
+              >Read More</v-btn
+            >
           </v-col>
           <v-col md="4" sm="4" class="small">
-            <v-card outlined tile style="margin-top:20px;border-radius:7px" :to="stocks[4].link">
+            <v-card
+              outlined
+              tile
+              style="margin-top: 20px; border-radius: 7px"
+              :to="stocks[4].link"
+            >
               <v-img
                 :src="stocks[4].backImage"
-                style="position:relative;"
+                style="position: relative"
                 class="programOverlay"
                 width="100%"
                 height="250"
@@ -323,33 +528,50 @@
               <v-img
                 :src="stocks[4].logo"
                 width="150"
-                style="position:absolute;top:50px;left:120px;right:50px;"
+                style="position: absolute; top: 50px; left: 120px; right: 50px"
               ></v-img>
 
               <p
                 class="headline text--primary"
-                style="padding-top:10px;font-family: 'Josefin Sans', sans-serif;font-size: 30px;font-style: normal;font-weight: 700;"
-              >{{ stocks[4].title }}</p>
+                style="
+                  padding-top: 10px;
+                  font-family: 'Josefin Sans', sans-serif;
+                  font-size: 30px;
+                  font-style: normal;
+                  font-weight: 700;
+                "
+              >
+                {{ stocks[4].title }}
+              </p>
               <p
                 class
-                style="font-family: 'Crimson Pro', serif;font-size: 20px;font-style: normal;font-weight:500;padding:10px;"
-              >{{ stocks[4].slogan }}</p>
+                style="
+                  font-family: 'Crimson Pro', serif;
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 500;
+                  padding: 10px;
+                "
+              >
+                {{ stocks[4].slogan }}
+              </p>
             </v-card>
             <v-btn
               color="#F69320"
-              style="margin-top: -10px;"
+              style="margin-top: -10px"
               block
               large
               :to="stocks[4].link"
-            >Read More</v-btn>
+              >Read More</v-btn
+            >
           </v-col>
         </v-row>
         <v-row class="align-center justify-center hidden-sm-and-up">
-          <v-col v-for="(p,i) in stocks" :key="i" cols="12">
+          <v-col v-for="(p, i) in stocks" :key="i" cols="12">
             <v-card outlined tile :to="p.link">
               <v-img
                 :src="p.backImage"
-                style="position:relative;"
+                style="position: relative"
                 class="programOverlay"
                 width="100%"
                 height="250"
@@ -357,19 +579,42 @@
               <v-img
                 :src="p.logo"
                 width="150"
-                style="position:absolute;top:50px;left:120px;right:50px;"
+                style="position: absolute; top: 50px; left: 120px; right: 50px"
               ></v-img>
 
               <p
                 class="headline text--primary"
-                style="padding-top:10px;font-family: 'Josefin Sans', sans-serif;font-size: 30px;font-style: normal;font-weight: 700;"
-              >{{ p.title }}</p>
+                style="
+                  padding-top: 10px;
+                  font-family: 'Josefin Sans', sans-serif;
+                  font-size: 30px;
+                  font-style: normal;
+                  font-weight: 700;
+                "
+              >
+                {{ p.title }}
+              </p>
               <p
                 class
-                style="font-family: 'Crimson Pro', serif;font-size: 20px;font-style: normal;font-weight:500;padding:10px;"
-              >{{ p.slogan }}</p>
+                style="
+                  font-family: 'Crimson Pro', serif;
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 500;
+                  padding: 10px;
+                "
+              >
+                {{ p.slogan }}
+              </p>
             </v-card>
-            <v-btn color="#F69320" style="margin-top: -10px;" block large :to="p.link">Read More</v-btn>
+            <v-btn
+              color="#F69320"
+              style="margin-top: -10px"
+              block
+              large
+              :to="p.link"
+              >Read More</v-btn
+            >
           </v-col>
         </v-row>
       </v-container>
@@ -387,7 +632,9 @@
     <v-container class="display">
       <v-row>
         <v-col cols="12">
-          <div class="display-2 text-center pt-12 pb-12 font-weight-bold">Coming Events</div>
+          <div class="display-2 text-center pt-12 pb-12 font-weight-bold">
+            Coming Events
+          </div>
           <carousel>
             <v-img
               v-for="s in events"
@@ -398,14 +645,14 @@
               class="d-inline-block"
             >
               <div class="actstyle">
-                <span style="font-size:27px;">{{s.title}}</span>
+                <span style="font-size: 27px">{{ s.title }}</span>
                 <v-row justify="center" no-gutters>
                   <v-col cols="10">
-                    <p>Date: {{s.date}}</p>
+                    <p>Date: {{ s.date }}</p>
                   </v-col>
 
                   <v-col cols="2">
-                    <v-btn to="/Victory_Party">
+                    <v-btn :to="s.url">
                       <v-icon color="#1B9DD8">chevron_right</v-icon>
                     </v-btn>
                   </v-col>
@@ -419,7 +666,9 @@
     <v-container class="hidden-sm-and-up">
       <v-row>
         <v-col cols="12">
-          <div class="display-2 text-center pt-12 pb-12 font-weight-bold">Coming Events</div>
+          <div class="display-2 text-center pt-12 pb-12 font-weight-bold">
+            Coming Events
+          </div>
 
           <v-img
             v-for="s in events"
@@ -430,10 +679,10 @@
             class="mb-5"
           >
             <div class="actstyle">
-              <span style="font-size:27px;">{{s.title}}</span>
+              <span style="font-size: 27px">{{ s.title }}</span>
               <v-row>
                 <v-col cols="10">
-                  <p>Date: {{s.date}}</p>
+                  <p>Date: {{ s.date }}</p>
                 </v-col>
 
                 <v-col cols="2">
@@ -448,11 +697,18 @@
       </v-row>
     </v-container>
     <div
-      style="border:1px solid black;margin-right:50px;margin-left:50px;margin-top:50px"
+      style="
+        border: 1px solid black;
+        margin-right: 50px;
+        margin-left: 50px;
+        margin-top: 50px;
+      "
       class="display"
     ></div>
 
-    <div class="display-2 text-center pt-12 pb-12 display">Latest Activities</div>
+    <div class="display-2 text-center pt-12 pb-12 display">
+      Latest Activities
+    </div>
     <Carousel></Carousel>
 
     <div class="director" id="director">
@@ -463,14 +719,17 @@
             <v-card-text>
               <p
                 class="subtitle-1 black--text"
-                style="font-family:'Times New Roman', serif;font-style:italic;"
+                style="
+                  font-family: 'Times New Roman', serif;
+                  font-style: italic;
+                "
               >
-                Fifteen years back, We found children at the dumpster area
-                scavenging for food. It breaks our hearts and we just took a
-                step by faith. Today we are serving thousands of children in
-                different location of our country. We never thought that we will
-                form any organization. We left our job and started to serve
-                neighboring marginalized children.
+                What terrible days everyone went through! No one even understood
+                what was going to happen in the days ahead. But even then God is
+                good! He is always good! Earlier this year God gave Nayomi (my
+                wife) a verse “So do not fear, for I am with you; do not be
+                dismayed, for I am your God. I will strengthen you and help you;
+                I will uphold you with my righteous right hand.” Isiah 41:10
               </p>
 
               <v-card-actions>
@@ -484,15 +743,19 @@
     <div class="getcon">
       <p
         class="text-center text_invent white--text text-uppercase"
-        style="font-size:50px;margin-top: 48px "
-      >Investing in the next generation</p>
+        style="font-size: 50px; margin-top: 48px"
+      >
+        Investing in the next generation
+      </p>
       <p
         class="text-center text_invent white--text text-uppercase"
-        style="font-size:50px;"
-      >touching the future</p>
+        style="font-size: 50px"
+      >
+        touching the future
+      </p>
       <p
         class="font-italic text-center text_invent white--text"
-        style="font-size:25px;margin-top: 48px "
+        style="font-size: 25px; margin-top: 48px"
       >
         "Then they would put their trust in God and would not forget his deeds
         but would keep his commands." - Psalm 78:7
@@ -507,7 +770,8 @@
             large
             class="button"
             to="/contact"
-          >Get Connected</v-btn>
+            >Get Connected</v-btn
+          >
         </v-col>
 
         <v-col cols="2" class="medium">
@@ -519,7 +783,8 @@
             to="/donate"
             large
             class="button"
-          >Donate</v-btn>
+            >Donate</v-btn
+          >
         </v-col>
       </v-row>
     </div>
@@ -545,14 +810,14 @@ export default {
     Footer,
     Slider,
     carousel,
-    EventSlide
+    EventSlide,
   },
 
   data() {
     return {
       stocks: [],
       events: [],
-      sliders: []
+      sliders: [],
     };
   },
   firestore() {
@@ -561,26 +826,26 @@ export default {
     // };
     const programs = db.collection("programs");
 
-    programs.get().then(querySnapshot => {
-      querySnapshot.forEach(doc => {
+    programs.get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
         this.stocks.push(doc.data());
       });
     });
     const events = db.collection("events");
 
-    events.get().then(querySnapshot => {
-      querySnapshot.forEach(doc => {
+    events.get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
         this.events.push(doc.data());
       });
     });
 
     const sliders = db.collection("slider");
-    sliders.get().then(querySnapshot => {
-      querySnapshot.forEach(doc => {
+    sliders.get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
         this.sliders.push(doc.data());
       });
     });
-  }
+  },
 };
 </script>
 

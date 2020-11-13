@@ -1,6 +1,11 @@
 <template>
   <div>
-    <v-data-table :headers="headers" :items="programs" sort-by="calories" class="elevation-1">
+    <v-data-table
+      :headers="headers"
+      :items="programs"
+      sort-by="calories"
+      class="elevation-1"
+    >
       <template v-slot:top>
         <v-toolbar flat color="white">
           <v-toolbar-title>Events</v-toolbar-title>
@@ -9,7 +14,9 @@
           <v-spacer></v-spacer>
           <v-dialog v-model="dialog" max-width="100%">
             <template v-slot:activator="{ on }">
-              <v-btn color="primary" dark class="mb-2" v-on="on">New Item</v-btn>
+              <v-btn color="primary" dark class="mb-2" v-on="on"
+                >New Item</v-btn
+              >
             </template>
             <v-card>
               <v-card-title>
@@ -19,15 +26,31 @@
               <v-card-text>
                 <v-card-text>
                   Please fill info and click on save
-                  <v-progress-linear indeterminate color="white" class="mb-0"></v-progress-linear>
+                  <v-progress-linear
+                    indeterminate
+                    color="white"
+                    class="mb-0"
+                  ></v-progress-linear>
                 </v-card-text>
                 <v-container>
                   <v-row>
                     <v-col cols="12" sm="6" md="4">
-                      <v-text-field v-model="editedItem.title" label="Title"></v-text-field>
+                      <v-text-field
+                        v-model="editedItem.title"
+                        label="Title"
+                      ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4">
-                      <v-text-field v-model="editedItem.date" label="Date"></v-text-field>
+                      <v-text-field
+                        v-model="editedItem.date"
+                        label="Date"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="6" md="4">
+                      <v-text-field
+                        v-model="editedItem.url"
+                        label="URL Link"
+                      ></v-text-field>
                     </v-col>
 
                     <v-col
@@ -50,7 +73,10 @@
                         </v-col>
                         <v-col cols="12" sm="6" md="6">
                           <v-card class="mx-auto" max-width="344">
-                            <v-img :src="editedItem.image" height="200px"></v-img>
+                            <v-img
+                              :src="editedItem.image"
+                              height="200px"
+                            ></v-img>
                           </v-card>
                         </v-col>
                       </v-row>
@@ -103,6 +129,7 @@ export default {
       },
       { text: "title", value: "title" },
       { text: "date", value: "date" },
+      { text: "url", value: "url" },
       { text: "Edit", value: "edit", sortable: false },
       { text: "Delete", value: "delete", sortable: false }
     ],
@@ -111,12 +138,14 @@ export default {
     editedItem: {
       title: "",
       date: "",
-      image: ""
+      image: "",
+      url: ""
     },
     defaultItem: {
       title: "",
       date: "",
-      image: ""
+      image: "",
+      url: ""
     }
   }),
 
