@@ -95,14 +95,14 @@
           dark
         >
           © {{ new Date().getFullYear() }}
-          <strong>Bijoy Inter-Church</strong>
-          . All Rights Reserved.
+          <strong>BIJOY INTER-CHURCH MINISTRIES</strong>
+          . ALL RIGHTS RESERVED.
           <div class="overline">
-            BICMT is a non-profitable humanitarian organization dedicated to the
-            children.
+            BICMT IS A FAITH-BASED INDIGENOUS MINISTRY OF CHRISTIANS DEDICATED
+            TO CHILDREN & TEENS.
           </div>
           <div class="overline">
-            Registered under Trust ACT 1882 S.L. No. 3937, Deed No. IV-22,
+            REGISTERED UNDER TRUST ACT 1882 S.L. NO. 3937, DEED NO. IV-22,
             05,05,2019
           </div>
         </v-col>
@@ -149,7 +149,10 @@ export default {
         link: "/contact",
         items: [
           { title: "Health Care", link: "/Health_Care" },
-          { title: "Equipping Church", link: "/Equipping_Church" },
+          {
+            title: "Children's Ministries Training",
+            link: "/Equipping_Church",
+          },
           { title: "Drop-In-Center", link: "/Drop-In-Center" },
           { title: "Emergency COVID Relief", link: "/Emergency_help" },
           { title: "Contact", link: "/Contact" },

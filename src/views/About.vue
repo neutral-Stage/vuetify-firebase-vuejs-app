@@ -147,17 +147,18 @@
               <div
                 class="white--text font-weight-bold cardtext"
                 style="
-                  font-size: 40px;
+                  font-size: 32px;
                   text-shadow: 2px 3px 3px black;
-                  line-height: 1.2em;
+                  line-height: 1.5em;
+                  font-family: 'Righteous', cursive;
                 "
               >
                 Reaches out children and equipping them to become the follower
                 of Christ mainly through our bi-weekly services, holiday camps,
-                after school programs, outreaches, churches and seminars, and to
-                those involved in reaching children by providing practical
-                training and equipping through high quality, relevant, life
-                changing teaching resources.
+                after school programs, outreaches, churches, seminars, and
+                Christmas rally, and to those involved in reaching children by
+                providing practical training and equipping through high quality,
+                relevant, life-changing teaching resources.
               </div>
             </div>
           </v-col>
@@ -360,7 +361,7 @@ export default {
         {
           year: "2009",
           content:
-            "Bijoy Ministries sharing God’s Word, mainly through bi-weekly services, holiday camps, after school programs, outreaches, churches, Christmas rally and special events, which brings the greatest hope in the life of children and equipping them to become a follower of Christ. Providing health care, medical bills, educational awareness, school supplies, tuition fees, skill-based practical training, etc. resulting ",
+            "Bijoy Ministries sharing God’s Word, mainly through bi-weekly services, holiday camps, after school programs, outreaches, churches, Christmas rally and special events, which brings the greatest hope in the life of children and equipping them to become a follower of Christ. Providing health care, medical bills, educational awareness, school supplies, tuition fees, skill-based practical training, etc. ",
         },
         {
           year: "2012",
@@ -459,8 +460,10 @@ export default {
     font-family: "Roboto", sans-serif !important;
   }
   .mission {
-    background-image: url("https://firebasestorage.googleapis.com/v0/b/bijoy-bd.appspot.com/o/about%2FMission.jpg?alt=media&token=77c11abe-04eb-4b3d-a46e-86c738d77039");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+      url("https://firebasestorage.googleapis.com/v0/b/bijoy-bd.appspot.com/o/about%2FMission.jpg?alt=media&token=77c11abe-04eb-4b3d-a46e-86c738d77039");
     background-repeat: no-repeat;
+    // background-blend-mode: overlay;
     -webkit-background-size: cover !important;
     -moz-background-size: cover !important;
     -o-background-size: cover !important;

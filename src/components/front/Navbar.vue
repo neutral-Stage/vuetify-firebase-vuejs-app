@@ -27,7 +27,7 @@
     </v-navigation-drawer>
     <v-app-bar
       app
-      style="position: relative;background-color:#1B9DD8;height:80px"
+      style="position: relative; background-color: #1B9DD8; height: 80px"
       fixed
     >
       <v-app-bar-nav-icon
@@ -38,20 +38,20 @@
         <router-link to="/">
           <v-img
             src="../../assets/logo/bijoybd.png"
-            style="margin-top:20px; "
+            style="margin-top: 20px"
           ></v-img>
         </router-link>
       </v-toolbar-title>
       <div>
         <img
           src="../../assets/logo/Logosmall.png"
-          style="margin-left:10px;margin-top:30px;"
+          style="margin-left: 10px; margin-top: 30px"
         />
       </div>
 
       <v-spacer></v-spacer>
 
-      <v-toolbar-items xs12 sm6 class="hidden-xs-only" style="margin-top:20px">
+      <v-toolbar-items xs12 sm6 class="hidden-xs-only" style="margin-top: 20px">
         <v-menu
           bottom
           origin="center center"
@@ -60,7 +60,7 @@
           v-for="item in menuItems"
           :key="item.title"
           offset-y
-          style="z-index:999;"
+          style="z-index: 999"
         >
           <template v-slot:activator="{ on }">
             <v-btn text dark :to="item.link" v-on="on">{{ item.title }}</v-btn>
@@ -70,7 +70,7 @@
             <v-col
               v-if="item.title == 'Programs'"
               cols="6"
-              style="background-color:#1B9DD8"
+              style="background-color: #1B9DD8"
             >
               <v-list dark color="#1B9DD8">
                 <v-list-item
@@ -85,7 +85,7 @@
             <v-col
               v-if="item.title == 'Programs'"
               cols="6"
-              style="background-color:#1B9DD8"
+              style="background-color: #1B9DD8"
             >
               <v-list dark color="#1B9DD8">
                 <v-list-item
@@ -113,7 +113,7 @@
             <v-col
               v-if="item.title == 'About'"
               cols="12"
-              style="background-color:#1B9DD8"
+              style="background-color: #1B9DD8"
             >
               <v-list dark color="#1B9DD8">
                 <v-list-item
@@ -161,7 +161,7 @@ export default {
           icon: "info",
           title: "About",
           link: "/about",
-          active: true
+          active: true,
         },
         {
           icon: "accessibility_new",
@@ -177,26 +177,26 @@ export default {
             { title: "Health Care", link: "/Health_Care" },
             { title: "Equipping Church", link: "/Equipping_Church" },
             { title: "Drop-In-Center", link: "/Drop-In-Center" },
-            { title: "Emergency COVID Relief", link: "/Emergency_help" }
-          ]
+            { title: "Emergency COVID Relief", link: "/Emergency_help" },
+          ],
         },
 
         {
           icon: "collections",
           title: "Gallery",
-          link: "/gallery"
+          link: "/gallery",
         },
         {
           icon: "chrome_reader_mode",
           title: "Stories",
-          link: "/Stories"
+          link: "/Stories",
         },
         {
           icon: "perm_contact_calendar",
           title: "Contact",
-          link: "/contact"
+          link: "/contact",
         },
-        { icon: "people", title: "Signin", link: "/signin" }
+        { icon: "people", title: "Signin", link: "/signin" },
       ],
       menuItems: [
         {
@@ -209,9 +209,9 @@ export default {
             { title: "Vision", link: "/about#vision" },
             { title: "Mission", link: "/about#mission" },
             { title: "Director’s Message", link: "/about#director" },
-            { title: "Financial Policy", link: "/about#financial" }
+            { title: "Financial Policy", link: "/about#financial" },
           ],
-          video: "https://www.youtube.com/embed/T-g24RKTFyA"
+          video: "https://www.youtube.com/embed/T-g24RKTFyA",
         },
         {
           icon: "accessibility_new",
@@ -223,38 +223,41 @@ export default {
             { title: "Back to school", link: "/dip" },
             { title: "Empowering children", link: "/Empower_children" },
             { title: "Equipping Families", link: "/Equipping_Families" },
-            { title: "Emergency COVID Relief", link: "/Emergency_help" }
+            { title: "Emergency COVID Relief", link: "/Emergency_help" },
           ],
           items2: [
             { title: "Victory Party", link: "/Victory_Party" },
             { title: "Health Care", link: "/Health_Care" },
-            { title: "Equipping Church", link: "/Equipping_Church" },
-            { title: "Drop-In-Center", link: "/Drop-In-Center" }
+            {
+              title: "Children's Ministries Training",
+              link: "/Equipping_Church",
+            },
+            { title: "Drop-In-Center", link: "/Drop-In-Center" },
           ],
-          video: "https://www.youtube.com/embed/dbKP0F414Zs"
+          video: "https://www.youtube.com/embed/dbKP0F414Zs",
         },
 
         {
           icon: "collections",
           title: "Gallery",
-          link: "/gallery"
+          link: "/gallery",
         },
         {
           icon: "chrome_reader_mode",
           title: "Stories",
-          link: "/Stories"
+          link: "/Stories",
         },
         {
           icon: "perm_contact_calendar",
           title: "Contact",
-          link: "/contact"
-        }
+          link: "/contact",
+        },
         // { icon: "people", title: "Signin", link: "/signin" }
-      ]
+      ],
     };
   },
-  mounted: function() {
-    window.onscroll = function() {
+  mounted: function () {
+    window.onscroll = function () {
       myFunction();
       aboutFunc();
     };
@@ -283,7 +286,7 @@ export default {
         header.classList.remove("sticky");
       }
     }
-  }
+  },
 };
 </script>
 
