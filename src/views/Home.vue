@@ -10,11 +10,18 @@
       </video>
     </v-row>
 
-    <Slider v-if="sliders[0].name == 'Slider'"></Slider>
+    <Slider
+      v-if="sliders[0].name == 'Slider'"
+      :slides="sliders[0].images"
+    ></Slider>
     <Navbar />
     <div class="vision" id="about">
       <v-container style="max-width: 1170px; padding-bottom: 0px">
-        <router-link to="#about" style="text-decoration: none">
+        <router-link
+          to="#about"
+          style="text-decoration: none"
+          data-aos="fade-up"
+        >
           <p
             class="flex font-weight-bold white--text burn"
             style="
@@ -32,7 +39,13 @@
         </router-link>
         <v-row justify-center>
           <v-col md="12">
-            <div class="pa-2" outlined tile style="text-align: center">
+            <div
+              class="pa-2"
+              outlined
+              tile
+              style="text-align: center"
+              data-aos="fade-up"
+            >
               <div
                 class="white--text font-weight-bold boxshadow"
                 style="text-shadow: 1px 2px 3px black; font-size: 60px"
@@ -79,7 +92,7 @@
         </router-link>
 
         <v-row class="align-center justify-center hidden-xs-only">
-          <v-col md="4" sm="4" class="small">
+          <v-col md="4" sm="4" class="small" data-aos="fade-up">
             <v-card
               outlined
               tile
@@ -133,7 +146,7 @@
               >Read More</v-btn
             >
           </v-col>
-          <v-col md="4" sm="4" class="small">
+          <v-col md="4" sm="4" class="small" data-aos="fade-up">
             <v-card
               outlined
               tile
@@ -187,7 +200,7 @@
               >Read More</v-btn
             >
           </v-col>
-          <v-col md="4" sm="4" class="small">
+          <v-col md="4" sm="4" class="small" data-aos="fade-up">
             <v-card
               outlined
               tile
@@ -241,7 +254,7 @@
               >Read More</v-btn
             >
           </v-col>
-          <v-col md="4" sm="4" class="small">
+          <v-col md="4" sm="4" class="small" data-aos="fade-up">
             <v-card
               outlined
               tile
@@ -295,7 +308,7 @@
               >Read More</v-btn
             >
           </v-col>
-          <v-col md="4" sm="4" class="small">
+          <v-col md="4" sm="4" class="small" data-aos="fade-up">
             <v-card
               outlined
               tile
@@ -349,7 +362,7 @@
               >Read More</v-btn
             >
           </v-col>
-          <v-col md="4" sm="4" class="small">
+          <v-col md="4" sm="4" class="small" data-aos="fade-up">
             <v-card
               outlined
               tile
@@ -403,7 +416,7 @@
               >Read More</v-btn
             >
           </v-col>
-          <v-col md="4" sm="4" class="small">
+          <v-col md="4" sm="4" class="small" data-aos="fade-up">
             <v-card
               outlined
               tile
@@ -457,7 +470,7 @@
               >Read More</v-btn
             >
           </v-col>
-          <v-col md="4" sm="4" class="small">
+          <v-col md="4" sm="4" class="small" data-aos="fade-up">
             <v-card
               outlined
               tile
@@ -511,7 +524,7 @@
               >Read More</v-btn
             >
           </v-col>
-          <v-col md="4" sm="4" class="small">
+          <v-col md="4" sm="4" class="small" data-aos="fade-up">
             <v-card
               outlined
               tile
@@ -619,23 +632,48 @@
         </v-row>
       </v-container>
     </div>
-
+    <v-container>
+      <v-row>
+        <v-col cols="12">
+          <div class="display-1 text-center primary--text">
+            We are specialist for
+          </div>
+        </v-col>
+        <v-col cols="12">
+          <service-section :services="services" />
+        </v-col>
+      </v-row>
+    </v-container>
     <v-row no-gutters>
       <v-col cols="12">
         <v-img
+          data-aos="fade-left"
+          aos-speed="1000"
           max-height="400px"
           src="https://firebasestorage.googleapis.com/v0/b/bijoy-bd.appspot.com/o/home%2Fchanging-edited.jpg?alt=media&token=f2ba9c79-2b0f-4448-a784-d3760bd069f4"
         ></v-img>
       </v-col>
     </v-row>
 
-    <v-container class="display">
+    <v-container>
       <v-row>
         <v-col cols="12">
           <div class="display-2 text-center pt-12 pb-12 font-weight-bold">
             Coming Events
           </div>
-          <carousel>
+          <carousel
+            :autoplay="true"
+            :loop="true"
+            :autoplaySpeed="true"
+            :rewind="true"
+            :margin="20"
+            :responsive="{
+              0: { items: 1, nav: false },
+              700: { items: 2, nav: true },
+              1024: { items: 2, nav: true },
+              1200: { items: 3, nav: true },
+            }"
+          >
             <v-img
               v-for="s in events"
               :key="s.title"
@@ -660,10 +698,12 @@
               </div>
             </v-img>
           </carousel>
+          <!-- <div v-for="s in events" :key="s.title" style="width: 300px">
+            </div> -->
         </v-col>
       </v-row>
     </v-container>
-    <v-container class="hidden-sm-and-up">
+    <!-- <v-container class="hidden-sm-and-up">
       <v-row>
         <v-col cols="12">
           <div class="display-2 text-center pt-12 pb-12 font-weight-bold">
@@ -695,7 +735,7 @@
           </v-img>
         </v-col>
       </v-row>
-    </v-container>
+    </v-container> -->
     <div
       style="
         border: 1px solid black;
@@ -711,26 +751,24 @@
     </div>
     <Carousel></Carousel>
 
-    <div class="director" id="director">
+    <div
+      class="director"
+      id="director"
+      :style="`background-image:url(${director[0].homeImageUrl})`"
+    >
       <v-row class="align-center">
         <v-col md="6" sm="12">
           <v-card max-width="500" class="mx-auto cardmagrin" max-height="500">
             <v-card-title>Director’s Message</v-card-title>
             <v-card-text>
-              <p
-                class="subtitle-1 black--text"
+              <div
+                class="line-clamp subtitle-1 black--text"
                 style="
                   font-family: 'Times New Roman', serif;
                   font-style: italic;
                 "
-              >
-                What terrible days everyone went through! No one even understood
-                what was going to happen in the days ahead. But even then God is
-                good! He is always good! Earlier this year God gave Nayomi (my
-                wife) a verse “So do not fear, for I am with you; do not be
-                dismayed, for I am your God. I will strengthen you and help you;
-                I will uphold you with my righteous right hand.” Isiah 41:10
-              </p>
+                v-html="director[0].message"
+              ></div>
 
               <v-card-actions>
                 <v-btn color="#F69320" to="/about#director">More</v-btn>
@@ -743,13 +781,17 @@
     <div class="getcon">
       <p
         class="text-center text_invent white--text text-uppercase"
-        style="font-size: 50px; margin-top: 48px"
+        style="
+          font-size: 50px;
+          margin-top: 48px;
+          font-family: 'Permanent Marker', cursive;
+        "
       >
         Investing in the next generation
       </p>
       <p
         class="text-center text_invent white--text text-uppercase"
-        style="font-size: 50px"
+        style="font-size: 50px; font-family: 'Permanent Marker', cursive"
       >
         touching the future
       </p>
@@ -803,6 +845,8 @@ import carousel from "vue-owl-carousel";
 import Slider from "../components/front/Slider";
 import EventSlide from "../components/front/EventSlide";
 
+import serviceSection from "../components/service/serviceSection";
+
 export default {
   components: {
     Navbar,
@@ -811,6 +855,7 @@ export default {
     Slider,
     carousel,
     EventSlide,
+    "service-section": serviceSection,
   },
 
   data() {
@@ -818,12 +863,25 @@ export default {
       stocks: [],
       events: [],
       sliders: [],
+      director: [],
+      services: [],
     };
   },
   firestore() {
-    // return {
-    //   programs: db.collection("programs")
-    // };
+    let director = db.collection("director").doc("0MYrlOJoTMFK1VDIGKVi");
+    let getDoc = director
+      .get()
+      .then((doc) => {
+        if (!doc.exists) {
+          console.log("No such document!");
+        } else {
+          console.log("Document data:", doc.data());
+          this.director.push(doc.data());
+        }
+      })
+      .catch((err) => {
+        console.log("Error getting document", err);
+      });
     const programs = db.collection("programs");
 
     programs.get().then((querySnapshot) => {
@@ -843,6 +901,12 @@ export default {
     sliders.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         this.sliders.push(doc.data());
+      });
+    });
+    const services = db.collection("services");
+    services.get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        this.services.push(doc.data());
       });
     });
   },
@@ -1003,10 +1067,14 @@ router-link {
   background-size: cover;
   background-position: top;
 }
-
+.line-clamp {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 10; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
 .director {
-  background: linear-gradient(rgba(10, 10, 20, 0.2), rgba(10, 10, 20, 0.2)),
-    url("https://firebasestorage.googleapis.com/v0/b/bijoy-bd.appspot.com/o/home%2FDirector-Message---Home-page.jpg?alt=media&token=0a1b1a8f-af71-4538-8b4f-9fbd9bd3fd8f");
   background-repeat: no-repeat;
   background-attachment: fixed;
   height: 600px;

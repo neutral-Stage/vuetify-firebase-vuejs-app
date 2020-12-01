@@ -1,12 +1,18 @@
 <template>
   <v-card elevation="12" width="256">
-    <v-navigation-drawer elevation="12" width="256" floating color="teal darken-2" dark>
+    <v-navigation-drawer
+      elevation="12"
+      width="256"
+      floating
+      color="teal darken-2"
+      dark
+    >
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="title">
             <v-avatar color="grey lighten-4" size="65" class="mr-3">
-              <img src="../../assets/logo/bijoybd.png" />
-            </v-avatar>Bijoy Ministries
+              <img src="../../assets/logo/bijoybd.png" /> </v-avatar
+            >Bijoy Ministries
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
@@ -41,32 +47,42 @@ export default {
     return {
       items: [
         {
+          title: "Director's Message",
+          icon: "mdi-message-bookmark-outline",
+          link: "/admin/director",
+        },
+        {
+          title: "Services",
+          icon: "mdi-folder-star",
+          link: "/admin/services",
+        },
+        {
           title: "Home Page Slider",
           icon: "mdi-play-box-outline",
-          link: "/admin/dashboard"
+          link: "/admin/dashboard",
         },
         {
           title: "Coming Events",
           icon: "mdi-calendar-check",
-          link: "/admin/events"
+          link: "/admin/events",
         },
         {
           title: "Latest Activities ",
           icon: "mdi-book-open",
-          link: "/admin/activity"
+          link: "/admin/activity",
         },
         {
           title: "Gallery  ",
           icon: "mdi-camera",
-          link: "/admin/gallery"
+          link: "/admin/gallery",
         },
         {
           title: "Stories ",
           icon: "mdi-account-heart",
-          link: "/admin/products"
+          link: "/admin/products",
         },
-        { title: "Programs", icon: "mdi-alpha-p-circle", link: "/admin/crud" }
-      ]
+        { title: "Programs", icon: "mdi-alpha-p-circle", link: "/admin/crud" },
+      ],
     };
   },
   methods: {
@@ -76,11 +92,11 @@ export default {
         .then(() => {
           this.$router.replace("/");
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
         });
-    }
-  }
+    },
+  },
 };
 </script>
 

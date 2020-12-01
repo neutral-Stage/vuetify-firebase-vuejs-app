@@ -24,13 +24,13 @@
     </div>
     <v-data-table
       :headers="headers"
-      :items="programs"
+      :items="services"
       sort-by="calories"
       class="elevation-1"
     >
       <template v-slot:top>
         <v-toolbar flat color="white">
-          <v-toolbar-title>Programs</v-toolbar-title>
+          <v-toolbar-title>Services</v-toolbar-title>
 
           <v-divider class="mx-4" inset vertical></v-divider>
           <v-spacer></v-spacer>
@@ -48,12 +48,6 @@
               <v-card-text>
                 <v-container>
                   <v-row>
-                    <v-col cols="12" sm="6" md="4">
-                      <v-text-field
-                        v-model="editedItem.story"
-                        label="Story ID"
-                      ></v-text-field>
-                    </v-col>
                     <v-col cols="12" sm="6" md="4">
                       <v-text-field
                         v-model="editedItem.title"
@@ -84,6 +78,11 @@
                         outlined
                         label="First Column Title"
                         v-model="editedItem.firstCol_title"
+                      ></v-text-field>
+                      <v-text-field
+                        outlined
+                        label="First Column Subitle"
+                        v-model="editedItem.firstCol_subtitle"
                       ></v-text-field>
 
                       <div
@@ -118,6 +117,11 @@
                         label="Second Column Title"
                         v-model="editedItem.secondCol_title"
                       ></v-text-field>
+                      <v-text-field
+                        outlined
+                        label="Second Column Subitle"
+                        v-model="editedItem.secondCol_subtitle"
+                      ></v-text-field>
                       <div
                         v-for="(point, index) in editedItem.secondCol_points"
                         :key="index"
@@ -148,6 +152,11 @@
                         outlined
                         label="Third Column Title"
                         v-model="editedItem.thirdCol_title"
+                      ></v-text-field>
+                      <v-text-field
+                        outlined
+                        label="Third Column Subitle"
+                        v-model="editedItem.thirdCol_subtitle"
                       ></v-text-field>
                       <div
                         v-for="(point, index) in editedItem.thirdCol_points"
@@ -262,14 +271,13 @@ export default {
         align: "left",
         value: "title",
       },
-      { text: "Story ID", value: "story" },
+      { text: "Service ID", value: "id" },
       { text: "Edit", value: "edit", sortable: false },
       { text: "Delete", value: "delete", sortable: false },
     ],
-    programs: [],
+    services: [],
     editedIndex: -1,
     editedItem: {
-      story: "",
       title: "",
       button: "",
       content: "",
@@ -281,7 +289,6 @@ export default {
       thirdCol_image: "",
     },
     defaultItem: {
-      story: "",
       title: "",
       button: "",
       content: "",
@@ -312,7 +319,7 @@ export default {
 
   firestore() {
     return {
-      programs: db.collection("programs"),
+      services: db.collection("services"),
     };
   },
 
@@ -339,7 +346,7 @@ export default {
 
       var storageRef = fb
         .storage()
-        .ref("programs/hba/" + Math.random() + "_" + backImage.title);
+        .ref("services/" + Math.random() + "_" + backImage.title);
       let uploadTask = storageRef.put(backImage);
       uploadTask.on(
         "state_changed",
@@ -366,7 +373,7 @@ export default {
 
       var storageRef = fb
         .storage()
-        .ref("programs/hba/" + Math.random() + "_" + firstCol_image.title);
+        .ref("services/" + Math.random() + "_" + firstCol_image.title);
       let uploadTask = storageRef.put(firstCol_image);
       uploadTask.on(
         "state_changed",
@@ -393,7 +400,7 @@ export default {
 
       var storageRef = fb
         .storage()
-        .ref("programs/hba/" + Math.random() + "_" + secondCol_image.title);
+        .ref("services/" + Math.random() + "_" + secondCol_image.title);
       let uploadTask = storageRef.put(secondCol_image);
       uploadTask.on(
         "state_changed",
@@ -420,7 +427,7 @@ export default {
 
       var storageRef = fb
         .storage()
-        .ref("programs/hba/" + Math.random() + "_" + thirdCol_image.title);
+        .ref("services/" + Math.random() + "_" + thirdCol_image.title);
       let uploadTask = storageRef.put(thirdCol_image);
       uploadTask.on(
         "state_changed",
@@ -447,7 +454,7 @@ export default {
 
       var storageRef = fb
         .storage()
-        .ref("programs/hba/" + Math.random() + "_" + logo.title);
+        .ref("services/" + Math.random() + "_" + logo.title);
       let uploadTask = storageRef.put(logo);
       uploadTask.on(
         "state_changed",
@@ -470,7 +477,7 @@ export default {
     },
 
     editItem(item) {
-      this.editedIndex = this.programs.indexOf(item);
+      this.editedIndex = this.services.indexOf(item);
       this.editedItem = Object.assign({}, item);
 
       this.dialog = true;
@@ -487,7 +494,7 @@ export default {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.value) {
-          this.$firestore.programs.doc(item.id).delete();
+          this.$firestore.services.doc(item.id).delete();
           console.log(item.id);
           Toast.fire({
             type: "error",
@@ -515,13 +522,13 @@ export default {
     save() {
       if (this.editedIndex > -1) {
         {
-          Object.assign({}, this.programs[this.editedIndex], this.editedItem);
+          Object.assign({}, this.services[this.editedIndex], this.editedItem);
         }
         Toast.fire({
           type: "info",
           title: "Updated in successfully",
         });
-        this.$firestore.programs
+        this.$firestore.services
           .doc(this.editedItem.id)
           .update(this.editedItem)
           .then((docRef) => {
@@ -533,8 +540,8 @@ export default {
       } else {
         //setTimeout(() => uploadbackImage(), 4000);
         // uploadbackImage();
-        this.programs.push(this.editedItem);
-        db.collection("programs")
+        this.services.push(this.editedItem);
+        db.collection("services")
           .add(this.editedItem)
           .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
@@ -546,7 +553,7 @@ export default {
 
         Toast.fire({
           type: "success",
-          title: "Program created successfully",
+          title: "Service created successfully",
         });
       }
       this.close();

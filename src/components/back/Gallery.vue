@@ -1,6 +1,11 @@
 <template>
   <div>
-    <v-data-table :headers="headers" :items="gallery" sort-by="calories" class="elevation-1">
+    <v-data-table
+      :headers="headers"
+      :items="gallery"
+      sort-by="calories"
+      class="elevation-1"
+    >
       <template v-slot:top>
         <v-toolbar flat color="white">
           <v-toolbar-title>Gallery</v-toolbar-title>
@@ -9,7 +14,9 @@
           <v-spacer></v-spacer>
           <v-dialog v-model="dialog" max-width="100%">
             <template v-slot:activator="{ on }">
-              <v-btn color="primary" dark class="mb-2" v-on="on">New Item</v-btn>
+              <v-btn color="primary" dark class="mb-2" v-on="on"
+                >New Item</v-btn
+              >
             </template>
             <v-card>
               <v-card-title>
@@ -19,7 +26,11 @@
               <v-card-text>
                 <v-card-text>
                   Please fill info and click on save
-                  <v-progress-linear indeterminate color="white" class="mb-0"></v-progress-linear>
+                  <v-progress-linear
+                    indeterminate
+                    color="white"
+                    class="mb-0"
+                  ></v-progress-linear>
                 </v-card-text>
                 <v-container>
                   <v-row>
@@ -38,7 +49,7 @@
                       sm="12"
                       md="12"
                       class="my-4"
-                      style="border:2px solid #80CBC4;border-radius:10px;"
+                      style="border: 2px solid #80cbc4; border-radius: 10px"
                     >
                       <v-row>
                         <v-col cols="12" sm="12" md="12">
@@ -56,10 +67,20 @@
                           cols="12"
                           sm="3"
                           md="2"
-                          v-for="(src,i) in editedItem.images"
+                          v-for="(src, i) in editedItem.images"
                           :key="i"
                         >
                           <v-card max-width="344">
+                            <v-btn
+                              fab
+                              absolute
+                              top
+                              right
+                              dark
+                              x-small
+                              @click="deleteImageAlert(src)"
+                              ><v-icon x-small>mdi-close</v-icon>
+                            </v-btn>
                             <v-img :src="src" height="200px"></v-img>
                           </v-card>
                         </v-col>
@@ -70,11 +91,27 @@
               </v-card-text>
 
               <v-card-actions class="pb-12">
-                <v-btn color="blue darken-1" class="mx-12" dark large @click="close">Cancel</v-btn>
-                <v-btn color="blue darken-1" class="mx-12" dark large @click="save">Save</v-btn>
+                <v-btn
+                  color="blue darken-1"
+                  class="mx-12"
+                  dark
+                  large
+                  @click="close"
+                  >Cancel</v-btn
+                >
+                <v-btn
+                  color="blue darken-1"
+                  class="mx-12"
+                  dark
+                  large
+                  @click="save"
+                  >Save</v-btn
+                >
 
                 <v-spacer></v-spacer>
-                <v-btn color="warning" @click="resetImages" class="mr-12" large>Reset</v-btn>
+                <v-btn color="warning" @click="resetImages" class="mr-12" large
+                  >Reset</v-btn
+                >
               </v-card-actions>
             </v-card>
           </v-dialog>
@@ -96,6 +133,7 @@
 <script>
 import { VueEditor } from "vue2-editor";
 import { fb, db } from "../../firebase";
+import * as admin from "firebase-admin";
 
 export default {
   components: { VueEditor },
@@ -109,29 +147,31 @@ export default {
       {
         text: "title",
         align: "left",
-        value: "title"
+        value: "title",
       },
 
       { text: "id", value: "id" },
       { text: "Edit", value: "edit", sortable: false },
-      { text: "Delete", value: "delete", sortable: false }
+      { text: "Delete", value: "delete", sortable: false },
     ],
     gallery: [],
     editedIndex: -1,
     editedItem: {
+      id: "",
       title: "",
-      images: []
+      images: [],
     },
     defaultItem: {
+      id: "",
       title: "",
-      images: []
-    }
+      images: [],
+    },
   }),
 
   computed: {
     formTitle() {
       return this.editedIndex === -1 ? "New Item" : "Edit Item";
-    }
+    },
   },
 
   watch: {
@@ -141,16 +181,40 @@ export default {
     dialogLoad(val) {
       // if (!val) return;
       // setTimeout(() => (this.dialogLoad = false), 4000);
-    }
+    },
   },
 
   firestore() {
     return {
-      gallery: db.collection("gallery")
+      gallery: db.collection("gallery"),
     };
   },
 
   methods: {
+    deleteImg(src) {
+      const fieldValue = admin.firestore.FieldValue;
+      let galleryRef = db.collection("gallery").doc(this.editedItem.id);
+      console.log("File url", galleryRef);
+      // Atomically remove a region from the "regions" array field.
+      let arrRm = galleryRef.update({
+        images: fieldValue.arrayRemove(src),
+      });
+
+      console.log("File url", src);
+      var desertRef = fb.storage().refFromURL(src);
+
+      // Delete the file
+      // desertRef
+      //   .delete()
+      //   .then(function () {
+      //     // File deleted successfully
+      //     console.log("File deleted successfully");
+      //   })
+      //   .catch(function (error) {
+      //     // Uh-oh, an error occurred!
+      //     console.error("File has error!!!");
+      //   });
+    },
     uploadimage(e) {
       let slides = this.Image;
 
@@ -158,22 +222,22 @@ export default {
       // var file = e.target.files[0];
       console.log(slides);
 
-      slides.forEach(function(slide) {
+      slides.forEach(function (slide) {
         var storageRef = fb
           .storage()
           .ref("gallery/" + Math.random() + "_gallery");
         let uploadTask = storageRef.put(slide);
         uploadTask.on(
           "state_changed",
-          snapshot => {},
-          error => {
+          (snapshot) => {},
+          (error) => {
             // Handle unsuccessful uploads
             console.log("ERROR");
           },
           () => {
             // Handle successful uploads on complete
             // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-            uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+            uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
               // imageUrl.push(downloadURL);
               // this.imageUrl = this.imgdata;
 
@@ -192,7 +256,26 @@ export default {
 
       this.dialog = true;
     },
+    deleteImageAlert(src) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.value) {
+          this.deleteImg(src);
 
+          Toast.fire({
+            type: "error",
+            title: "gallery image Deleted in successfully",
+          });
+        }
+      });
+    },
     deleteItem(item) {
       Swal.fire({
         title: "Are you sure?",
@@ -201,14 +284,14 @@ export default {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      }).then(result => {
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
         if (result.value) {
           this.$firestore.gallery.doc(item.id).delete();
           console.log(item.id);
           Toast.fire({
             type: "error",
-            title: "gallery Deleted in successfully"
+            title: "gallery Deleted in successfully",
           });
         }
       });
@@ -228,7 +311,7 @@ export default {
       this.gallery = {
         title: null,
         id: null,
-        images: []
+        images: [],
       };
     },
     save() {
@@ -238,15 +321,15 @@ export default {
         }
         Toast.fire({
           type: "info",
-          title: "gallery Updated in successfully"
+          title: "gallery Updated in successfully",
         });
         this.$firestore.gallery
           .doc(this.editedItem.id)
           .update(this.editedItem)
-          .then(docRef => {
+          .then((docRef) => {
             this.reset();
           })
-          .catch(function(error) {
+          .catch(function (error) {
             console.error("Error adding document: ", error);
           });
       } else {
@@ -255,21 +338,28 @@ export default {
         this.gallery.push(this.editedItem);
         db.collection("gallery")
           .add(this.editedItem)
-          .then(docRef => {
+          .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
             this.reset();
           })
-          .catch(function(error) {
+          .catch(function (error) {
             console.error("Error adding document: ", error);
           });
 
         Toast.fire({
           type: "success",
-          title: "new gallery created successfully"
+          title: "new gallery created successfully",
         });
       }
       this.close();
-    }
-  }
+    },
+  },
 };
 </script>
+
+<style lang="scss" scoped>
+.v-btn--absolute.v-btn--right,
+.v-btn--fixed.v-btn--right {
+  right: -12px;
+}
+</style>

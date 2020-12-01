@@ -1,48 +1,42 @@
 <template>
-  <div>
-    <v-footer padless dark>
-      <v-row justify="center" no-gutters class="backimage">
-        <v-col cols="2" class="display">
-          <div class="headline text-uppercase mt-5 ml-5">
-            <router-link to="/">
-              <v-img
-                src="../../assets/logo/bijoylogo.png"
-                width="150"
-                height="auto"
-              ></v-img>
-            </router-link>
-          </div>
-        </v-col>
+  <v-footer padless dark>
+    <v-row justify="center" no-gutters class="backimage">
+      <v-col cols="2" class="display">
+        <div class="headline text-uppercase mt-5 ml-5">
+          <router-link to="/">
+            <v-img
+              src="../../assets/logo/bijoylogo.png"
+              width="150"
+              height="auto"
+            ></v-img>
+          </router-link>
+        </div>
+      </v-col>
 
-        <v-col cols="10" class="small">
-          <v-row justify="center" no-gutters>
-            <v-col
-              cols="2"
-              class="foot"
-              v-for="item in menuItems"
-              :key="item.title"
-            >
-              <div v-if="item.items">
-                <div v-for="(item, i) in item.items" :key="i" class="mt-6">
-                  <router-link
-                    class="body-2"
-                    style="
-                      line-height: 15px;
-                      font-family: 'Josefin Sans', sans-serif;
-                      cursor: pointer;
-                      text-align: center;
-                    "
-                    :to="item.link"
-                    tag="p"
-                    >{{ item.title }}</router-link
-                  >
-                </div>
+      <v-col cols="12" md="10">
+        <v-row justify="center" no-gutters>
+          <v-col cols="4" md="2" v-for="item in menuItems" :key="item.title">
+            <div v-if="item.items">
+              <div v-for="(item, i) in item.items" :key="i" class="mt-6">
+                <router-link
+                  class="body-2"
+                  style="
+                    line-height: 15px;
+                    font-family: 'Josefin Sans', sans-serif;
+                    cursor: pointer;
+                    text-align: center;
+                  "
+                  :to="item.link"
+                  tag="p"
+                  >{{ item.title }}</router-link
+                >
               </div>
-            </v-col>
-            <v-col cols="6" class="mt-5 small text-center">
-              <!-- <p class="body-2">Sign Up for E-news</p> -->
+            </div>
+          </v-col>
+          <v-col cols="12" md="6" class="mt-5 text-center">
+            <!-- <p class="body-2">Sign Up for E-news</p> -->
 
-              <!-- <v-row>
+            <!-- <v-row>
                 <v-col cols="12">
                   <v-row>
                     <v-col cols="4" class="half">
@@ -68,47 +62,46 @@
                 </v-col>
               </v-row> -->
 
-              <v-row justify="center">
-                <v-col cols="8" class="text-center">
-                  <div class="text-right mt-1">Stay Connected :</div>
-                </v-col>
-                <v-col cols="4">
-                  <div class="group text-left">
-                    <v-btn color="black" fab x-small dark>
-                      <v-icon>mdi-facebook</v-icon>
-                    </v-btn>
-                    <v-btn color="black" fab x-small dark class="ml-2">
-                      <v-icon>mdi-twitter</v-icon>
-                    </v-btn>
-                    <v-btn color="black" fab x-small dark class="ml-2">
-                      <v-icon>mdi-youtube</v-icon>
-                    </v-btn>
-                  </div>
-                </v-col>
-              </v-row>
-            </v-col>
-          </v-row>
-        </v-col>
-        <v-col
-          class="py-4 text-center white--text overline display"
-          cols="12"
-          dark
-        >
-          © {{ new Date().getFullYear() }}
-          <strong>BIJOY INTER-CHURCH MINISTRIES</strong>
-          . ALL RIGHTS RESERVED.
-          <div class="overline">
-            BICMT IS A FAITH-BASED INDIGENOUS MINISTRY OF CHRISTIANS DEDICATED
-            TO CHILDREN & TEENS.
-          </div>
-          <div class="overline">
-            REGISTERED UNDER TRUST ACT 1882 S.L. NO. 3937, DEED NO. IV-22,
-            05,05,2019
-          </div>
-        </v-col>
-      </v-row>
-    </v-footer>
-  </div>
+            <v-row justify="center">
+              <v-col cols="6" md="8" class="text-center">
+                <div class="text-right mt-1">Stay Connected :</div>
+              </v-col>
+              <v-col cols="6" md="4">
+                <div class="group text-left">
+                  <v-btn color="black" fab x-small dark>
+                    <v-icon>mdi-facebook</v-icon>
+                  </v-btn>
+                  <v-btn color="black" fab x-small dark class="ml-2">
+                    <v-icon>mdi-twitter</v-icon>
+                  </v-btn>
+                  <v-btn color="black" fab x-small dark class="ml-2">
+                    <v-icon>mdi-youtube</v-icon>
+                  </v-btn>
+                </div>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-col
+        class="py-4 text-center white--text overline display"
+        cols="12"
+        dark
+      >
+        © {{ new Date().getFullYear() }}
+        <strong>BIJOY INTER-CHURCH MINISTRIES</strong>
+        . ALL RIGHTS RESERVED.
+        <div class="overline">
+          BICMT IS A FAITH-BASED INDIGENOUS MINISTRY OF CHRISTIANS DEDICATED TO
+          CHILDREN & TEENS.
+        </div>
+        <div class="overline">
+          REGISTERED UNDER TRUST ACT 1882 S.L. NO. 3937, DEED NO. IV-22,
+          05,05,2019
+        </div>
+      </v-col>
+    </v-row>
+  </v-footer>
 </template>
 
 <script>
@@ -139,7 +132,7 @@ export default {
           { title: "Back to school", link: "/dip" },
           { title: "Empowering children", link: "/Empower_children" },
           { title: "Equipping Families", link: "/Equipping_Families" },
-          { title: "Victory Party", link: "/Victory_Party" },
+          { title: "Christmas Outreach", link: "/Christmas_outreach" },
         ],
       },
 
@@ -166,26 +159,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media only screen and (max-width: 600px) {
-  .small {
-    width: 100% !important;
-    max-width: 100% !important;
-    flex-basis: 100% !important;
-  }
-  .foot {
-    width: 33.33% !important;
-    max-width: 33.33% !important;
-    flex-basis: 33.33% !important;
-  }
-  .half {
-    width: 50% !important;
-    max-width: 50% !important;
-    flex-basis: 50% !important;
-  }
-}
-
 .backimage {
-  background-color: #1B9DD8;
+  background-color: #1b9dd8;
   // background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(20, 20, 20, 0.5)),
   //   url("https://firebasestorage.googleapis.com/v0/b/bijoy-bd.appspot.com/o/home%2Ffooter.jpg?alt=media&token=2c20541e-aae4-4369-895f-20ddc882107e");
   background-repeat: no-repeat;

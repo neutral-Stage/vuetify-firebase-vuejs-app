@@ -8,7 +8,7 @@
       :slide-ratio="0.5"
       autoplay
     >
-      <vueper-slide v-for="(slide, i) in slides[0].images" :key="i" :image="slide">
+      <vueper-slide v-for="(slide, i) in slides" :key="i" :image="slide">
         <div slot="slideContent"></div>
       </vueper-slide>
     </vueper-slides>
@@ -16,45 +16,35 @@
 </template>
 
 <script>
-import { fb, db } from "../../firebase";
 import { VueperSlides, VueperSlide } from "vueperslides";
 
 // Since v. 1.6.0, you need to include Vueper Slides CSS file for default styles.
 import "vueperslides/dist/vueperslides.css";
 
 export default {
+  props: ["slides"],
   components: { VueperSlides, VueperSlide },
   data() {
     return {
-      slides: [],
       breakpoints: {
         1200: {
-          slideRatio: 1 / 5
+          slideRatio: 1 / 5,
         },
         900: {
-          slideRatio: 1 / 3
+          slideRatio: 1 / 3,
         },
         600: {
           slideRatio: 1 / 2,
           arrows: false,
-          bulletsOutside: true
+          bulletsOutside: true,
         },
         // The order you list breakpoints does not matter, Vueper Slides will sort them for you.
         1100: {
-          slideRatio: 1 / 4
-        }
-      }
+          slideRatio: 1 / 4,
+        },
+      },
     };
   },
-  firestore() {
-    // let sliderRef = db.collection("slider").doc("mtYHRL4KEDdDxafo0R0w");
-    const sliders = db.collection("slider");
-    sliders.get().then(querySnapshot => {
-      querySnapshot.forEach(doc => {
-        this.slides.push(doc.data());
-      });
-    });
-  }
 };
 </script>
 

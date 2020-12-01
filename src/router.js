@@ -103,6 +103,11 @@ const router = new Router({
       component: () => import("./views/Admin.vue"),
       children: [
         {
+          path: "director",
+          name: "director",
+          component: () => import("./components/back/Director.vue"),
+        },
+        {
           path: "dashboard",
           name: "dashboard",
           component: () => import("./components/back/Dashboard.vue"),
@@ -116,6 +121,11 @@ const router = new Router({
           path: "crud",
           name: "crud",
           component: () => import("./components/back/Crud.vue"),
+        },
+        {
+          path: "services",
+          name: "services",
+          component: () => import("./components/back/Services.vue"),
         },
         {
           path: "gallery",
@@ -134,11 +144,7 @@ const router = new Router({
         },
       ],
     },
-    // {
-    //   path: "products",
-    //   name: "products",
-    //   component: () => import("./components/back/Products.vue")
-    // },
+
     {
       path: "profile",
       name: "profile",
@@ -195,8 +201,8 @@ const router = new Router({
       component: () => import("./views/program/Emergency_help.vue"),
     },
     {
-      path: "/Victory_Party",
-      name: "Victory_Party",
+      path: "/Christmas_outreach",
+      name: "Christmas Outreach",
       component: () => import("./views/program/Victory_Party.vue"),
     },
     {
@@ -224,6 +230,12 @@ const router = new Router({
       name: "story",
       props: true,
       component: () => import("./views/story/Story.vue"),
+    },
+    {
+      path: "/services/:serviceId",
+      name: "service",
+      props: true,
+      component: () => import("./views/Service.vue"),
     },
   ],
 });

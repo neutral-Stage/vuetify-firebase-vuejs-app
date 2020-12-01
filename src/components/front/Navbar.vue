@@ -226,7 +226,7 @@ export default {
             { title: "Emergency COVID Relief", link: "/Emergency_help" },
           ],
           items2: [
-            { title: "Victory Party", link: "/Victory_Party" },
+            { title: "Christmas Outreach", link: "/Christmas_outreach" },
             { title: "Health Care", link: "/Health_Care" },
             {
               title: "Children's Ministries Training",

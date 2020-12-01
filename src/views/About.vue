@@ -154,100 +154,36 @@
                 "
               >
                 Reaches out children and equipping them to become the follower
-                of Christ mainly through our bi-weekly services, holiday camps,
-                after school programs, outreaches, churches, seminars, and
-                Christmas rally, and to those involved in reaching children by
-                providing practical training and equipping through high quality,
-                relevant, life-changing teaching resources.
+                of Christ and to those involved in reaching children by
+                providing practical training.
               </div>
             </div>
           </v-col>
         </v-row>
       </v-container>
     </div>
-    <div class="director" id="director">
+    <div
+      class="director"
+      id="director"
+      :style="`background-image:url(${director.aboutImageUrl})`"
+    >
       <v-row>
         <v-col md="12">
           <v-card max-width="600" class="ml-auto">
             <v-img
               class="hidden-sm-and-up"
-              src="https://firebasestorage.googleapis.com/v0/b/bijoy-bd.appspot.com/o/Director-Message-1.jpg?alt=media&token=19716446-b0f3-4856-9aae-0d2775c37711"
+              :src="director.aboutImageUrl"
             ></v-img>
             <v-card-title>Director’s Message</v-card-title>
             <v-card-text>
-              <p
+              <div
                 class="subtitle-1 black--text"
                 style="
                   font-family: 'Times New Roman', serif;
                   font-style: italic;
                 "
-              >
-                What terrible days everyone went through! No one even understood
-                what was going to happen in the days ahead. But even then God is
-                good! He is always good! Earlier this year God gave Nayomi (my
-                wife) a verse
-              </p>
-              <p
-                class="subtitle-1 black--text"
-                style="
-                  font-family: 'Times New Roman', serif;
-                  font-style: italic;
-                "
-              >
-                “So do not fear, for I am with you; do not be dismayed, for I am
-                your God. I will strengthen you and help you; I will uphold you
-                with my righteous right hand.” Isiah 41:10
-              </p>
-              <p
-                class="subtitle-1 black--text"
-                style="
-                  font-family: 'Times New Roman', serif;
-                  font-style: italic;
-                "
-              >
-                He put signs on all the doors of the house saying "God is in
-                control." Immediately after that, the global pandemic started,
-                and gradually it’s become a terrible shape. At that moment God
-                gave me a Bible verse
-              </p>
-              <p
-                class="subtitle-1 black--text"
-                style="
-                  font-family: 'Times New Roman', serif;
-                  font-style: italic;
-                "
-              >
-                “Do not be anxious about anything, but in every situation, by
-                prayer and petition, with thanksgiving, ….Christ Jesus.”
-                Philippians 4: 6-7.
-              </p>
-              <p
-                class="subtitle-1 black--text"
-                style="
-                  font-family: 'Times New Roman', serif;
-                  font-style: italic;
-                "
-              >
-                The level of infection in Bangladesh continued to rise, but the
-                Lord protected our family in it and still does. It’s really
-                about standing in front of the enemy and shouting “Hallelujah”.
-                Circumstances frighten us but God's Word always gives us
-                strength. Wow! How great is our God! Looking back, we can only
-                see his goodness. The grateful heart comes from the sight of
-                seeing goodness. For that David says
-              </p>
-              <p
-                class="subtitle-1 black--text"
-                style="
-                  font-family: 'Times New Roman', serif;
-                  font-style: italic;
-                "
-              >
-                “show me a sign of Your goodness…,” Psalm 86:17 There are so
-                many things to be thankful for and throughout the page we hope
-                you will be inspired and join with us giving thanks to the Lord
-                for all He has done.
-              </p>
+                v-html="director.message"
+              ></div>
             </v-card-text>
           </v-card>
         </v-col>
@@ -334,6 +270,7 @@
 </template>
 
 <script>
+import { fb, db } from "../firebase";
 import Navbar from "../components/front/Navbar";
 import Aboutnav from "../components/front/Aboutnav";
 import Footer from "../components/front/Footer";
@@ -347,6 +284,7 @@ export default {
   },
   data() {
     return {
+      director: [],
       history: [
         {
           year: "2003",
@@ -371,6 +309,11 @@ export default {
       ],
     };
   },
+  firestore() {
+    return {
+      director: db.collection("director").doc("0MYrlOJoTMFK1VDIGKVi"),
+    };
+  },
 };
 </script>
 
@@ -392,7 +335,6 @@ export default {
     height: auto !important;
   }
   .director {
-    background-image: url("https://wallpaperplay.com/walls/full/e/0/1/102440.jpg") !important;
     background-repeat: no-repeat;
 
     -webkit-background-size: contain !important;
@@ -476,8 +418,8 @@ export default {
   font-size: 1.25rem;
   font-weight: 500;
   line-height: 2rem;
-  letter-spacing: 0.0125em;
-  font-family: "Roboto", sans-serif;
+  // letter-spacing: 0.0125em;
+  font-family: "Montserrat", sans-serif;
 }
 .history {
   background-image: url("https://firebasestorage.googleapis.com/v0/b/bijoy-bd.appspot.com/o/gallery%2FGalary-Slider-(4).jpg?alt=media&token=7ef4ae37-3ace-4bcc-8d6b-ccff045004e3");
