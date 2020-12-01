@@ -4,7 +4,9 @@
       <Sidebar class="sidebar" />
       <v-toolbar id="core-toolbar" color="teal darken-2" dark flat>
         <div class="v-toolbar-title">
-          <v-toolbar-title class="tertiary--text font-weight-light">Bijoy Ministries Admin Dashboard</v-toolbar-title>
+          <v-toolbar-title class="tertiary--text font-weight-light"
+            >Bijoy Ministries Admin Dashboard</v-toolbar-title
+          >
         </div>
         <v-spacer></v-spacer>
         <v-toolbar-items>
@@ -17,13 +19,13 @@
       </v-toolbar>
     </v-app-bar>
 
-    <v-content>
+    <v-main>
       <v-container fluid>
         <v-row align="center" justify="center">
           <router-view></router-view>
         </v-row>
       </v-container>
-    </v-content>
+    </v-main>
 
     <v-footer inset app>
       <span class="px-4">&copy; {{ new Date().getFullYear() }}</span>
@@ -38,10 +40,10 @@ import Tables from "@/components/back/Tables.vue";
 export default {
   components: {
     Sidebar,
-    Tables
+    Tables,
   },
   data: () => ({
-    drawer: null
+    drawer: null,
   }),
   methods: {
     logout() {
@@ -50,11 +52,11 @@ export default {
         .then(() => {
           this.$router.replace("/");
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
         });
-    }
-  }
+    },
+  },
 };
 </script>
 

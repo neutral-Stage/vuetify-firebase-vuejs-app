@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-content style="padding: 0px ">
+    <v-main style="padding: 0px">
       <router-view></router-view>
-    </v-content>
+    </v-main>
   </div>
 </template>
 
@@ -12,10 +12,10 @@ import HelloWorld from "./components/HelloWorld";
 export default {
   name: "App",
   components: {
-    HelloWorld
+    HelloWorld,
   },
   data: () => ({
     //
-  })
+  }),
 };
 </script>

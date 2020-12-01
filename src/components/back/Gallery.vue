@@ -78,7 +78,7 @@
                               right
                               dark
                               x-small
-                              @click="deleteImageAlert(src)"
+                              @click="deleteImageAlert(src, i)"
                               ><v-icon x-small>mdi-close</v-icon>
                             </v-btn>
                             <v-img :src="src" height="200px"></v-img>
@@ -133,7 +133,6 @@
 <script>
 import { VueEditor } from "vue2-editor";
 import { fb, db } from "../../firebase";
-import * as admin from "firebase-admin";
 
 export default {
   components: { VueEditor },
@@ -191,29 +190,32 @@ export default {
   },
 
   methods: {
-    deleteImg(src) {
-      const fieldValue = admin.firestore.FieldValue;
-      let galleryRef = db.collection("gallery").doc(this.editedItem.id);
-      console.log("File url", galleryRef);
-      // Atomically remove a region from the "regions" array field.
-      let arrRm = galleryRef.update({
-        images: fieldValue.arrayRemove(src),
-      });
+    deleteImg(src, i) {
+      this.editedItem.images.splice(this.editedItem.images.indexOf(i), 1);
 
-      console.log("File url", src);
+      db.collection("gallery")
+        .doc(this.editedItem.id)
+        .update("images", this.editedItem.images)
+        .then((docRef) => {
+          console.log("Image changed to", this.editedItem.images);
+        })
+        .catch(function (error) {
+          console.error("Error adding document: ", error);
+        });
+
       var desertRef = fb.storage().refFromURL(src);
 
       // Delete the file
-      // desertRef
-      //   .delete()
-      //   .then(function () {
-      //     // File deleted successfully
-      //     console.log("File deleted successfully");
-      //   })
-      //   .catch(function (error) {
-      //     // Uh-oh, an error occurred!
-      //     console.error("File has error!!!");
-      //   });
+      desertRef
+        .delete()
+        .then(function () {
+          // File deleted successfully
+          console.log("File deleted successfully");
+        })
+        .catch(function (error) {
+          // Uh-oh, an error occurred!
+          console.error("File has error!!!");
+        });
     },
     uploadimage(e) {
       let slides = this.Image;
@@ -256,7 +258,7 @@ export default {
 
       this.dialog = true;
     },
-    deleteImageAlert(src) {
+    deleteImageAlert(src, i) {
       Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -267,7 +269,7 @@ export default {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.value) {
-          this.deleteImg(src);
+          this.deleteImg(src, i);
 
           Toast.fire({
             type: "error",

@@ -146,7 +146,7 @@ const router = new Router({
     },
 
     {
-      path: "profile",
+      path: "/profile",
       name: "profile",
       component: () => import("./components/back/Profile.vue"),
     },

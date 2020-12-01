@@ -1,36 +1,16 @@
 <template>
   <v-app id="inspire">
-    <v-content>
-      <v-container
-        class="fill-height"
-        fluid
-      >
-        <v-row
-          align="center"
-          justify="center"
-        >
-          <v-col
-            cols="12"
-            sm="8"
-            md="4"
-          >
+    <v-main>
+      <v-container class="fill-height" fluid>
+        <v-row align="center" justify="center">
+          <v-col cols="12" sm="8" md="4">
             <v-card class="elevation-12">
-              <v-toolbar
-                color="primary"
-                dark
-                flat
-              >
+              <v-toolbar color="primary" dark flat>
                 <v-toolbar-title>Sign Up form</v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-tooltip bottom>
                   <template v-slot:activator="{ on }">
-                    <v-btn
-                      :href="source"
-                      icon
-                      large
-                      target="_blank"
-                      v-on="on"
-                    >
+                    <v-btn :href="source" icon large target="_blank" v-on="on">
                       <v-icon>mdi-code-tags</v-icon>
                     </v-btn>
                   </template>
@@ -82,16 +62,13 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn
-                  color="primary"
-                  @click="register"
-                >Sign up</v-btn>
+                <v-btn color="primary" @click="register">Sign up</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
       </v-container>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
@@ -99,22 +76,22 @@
 import { fb } from "../firebase";
 export default {
   props: {
-    source: String
+    source: String,
   },
   data: () => ({
     drawer: null,
     email: null,
     name: null,
-    password: null
+    password: null,
   }),
   methods: {
     register() {
       fb.auth()
         .createUserWithEmailAndPassword(this.email, this.password)
-        .then(user => {
+        .then((user) => {
           this.$router.replace("admin");
         })
-        .catch(function(error) {
+        .catch(function (error) {
           // Handle Errors here.
           var errorCode = error.code;
           var errorMessage = error.message;
@@ -125,7 +102,7 @@ export default {
           }
           console.log(error);
         });
-    }
-  }
+    },
+  },
 };
 </script>
